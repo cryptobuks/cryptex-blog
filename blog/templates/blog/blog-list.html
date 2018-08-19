@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+   Cryptex Blog
+{% endblock title %}
+
+{% block content %}
+    <div class="bg-info mx-auto">
+        <h1 class="text-white text-center">
+            Latest Blogs
+        </h1>
+    </div>
+    {% for blog in blogs %}
+        {% if blog.display %}
+            <div class="card">
+                <div class="card-body mr-auto">
+                    <div class="card-title">
+                        <h4>
+                            <a href="#" class="custom-link">{{ blog.title }}</a>
+                        </h4>
+                    </div>
+                    <div class="card-text">
+                        <p class="text-muted">
+                            <small>Uploaded on: {{ blog.created | date:"d M Y, f A" }}</small><br>
+                            <small>Last Updated: {{ blog.updated | date:"d M Y, f A" }}</small>
+                        </p>
+                        {{ blog.post | truncatewords:20 | safe }}
+                    </div>
+                    <a href="{% url "blog:view_blog" blog.slug %}" class="btn btn-info">Read this blog</a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}

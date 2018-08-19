@@ -1,0 +1,5 @@
+.custom-link, .custom-link:hover
+{
+    text-decoration: none;
+    color: inherit;
+}

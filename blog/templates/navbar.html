@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-2">
+    <a class="navbar-brand" href="#">
+        <img src="{% static "img/logo.svg" %}" alt="logo" style="width: 1.5cm">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link active" href="{% url 'blog:home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'blog:view_all_blogs' %}">Blogs</a>
+            </li>
+            {% comment %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">About Us</a>
+                </li>
+            {% endcomment %}
+        </ul>
+        {% comment %}
+            <form class="form-inline my-2 my-lg-0" action="" method="get">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        {% endcomment %}
+    </div>
+</nav>
